@@ -6,11 +6,11 @@ class SceneSplash(pyghelpers.Scene):
     def __init__(self,window):
         self.window = window
         self.backgroundImage = pygwidgets.Image(self.window,(0,0),'images/background.png') 
-        self.textRulesHeader = pygwidgets.DisplayText(self.window,(150,100),
+        self.textRulesHeader = pygwidgets.DisplayText(self.window,(180,100),
                                                       fontName = None,fontSize=60,textColor = RANDOM_COLOR)
         self.textRulesHeader.setValue("Rules Of the Game")
         self.textOfRules = pygwidgets.DisplayText(self.window,(50,250),fontSize=30,textColor = WHITE)
-        self.textOfRules.setValue("You are a spaceship.You should win! It is all that you need to know")
+        self.textOfRules.setValue("You are a spaceship.Your mission is destroing meteorites and survive.\nYou are given points for destroying meteorites and duration of your space journey.\nGood luck!")
         self.startButton = pygwidgets.CustomButton(self.window, (400, 550),
                                                 up='images/startNormal.png',
                                                 down='images/startDown.png',

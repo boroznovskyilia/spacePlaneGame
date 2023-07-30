@@ -108,6 +108,7 @@ class ScenePlay(pyghelpers.Scene):
         self.playingState = STATE_WAITING
         self.koefForTimer = 0.01
         self.timerStarted = time.time()
+        self.addNewMeteorite = self.oMeteoriteMgr.getAddNewMeteorite()
 
     def getSceneKey(self):
         return SCENE_PLAY
@@ -149,6 +150,10 @@ class ScenePlay(pyghelpers.Scene):
                     self.levelUpSound.play()
                     self.koefForTimer *= 2
                     self.level += 1
+                    self.addNewMeteorite = self.oMeteoriteMgr.getAddNewMeteorite()
+                    if(self.addNewMeteorite>0):
+                        self.addNewMeteorite -= 1
+                        self.oMeteoriteMgr.setAddNewMeteorite(self.addNewMeteorite)
                     
             return
         
@@ -188,6 +193,7 @@ class ScenePlay(pyghelpers.Scene):
             pygame.time.delay(1200)
             self.playingState = STATE_GAME_OVER
             self.draw()
+            self.score = int(self.score)
             if self.score > self.lowestHighScore:
                 scoreString = 'Your score: ' + str(self.score) + '\n'
                 if self.score > self.highestHighScore:
@@ -203,8 +209,8 @@ class ScenePlay(pyghelpers.Scene):
         
         self.elapsed = time.time() - self.timerStarted
         self.score = self.score + self.elapsed*self.koefForTimer
-        self.score = int(self.score)
-        self.scoreText.setValue(self.score)
+        self.score = self.score
+        self.scoreText.setValue(int(self.score))
         oBulletList = self.oBulletMgr.getBulletList()
         oMeteoriteList = self.oMeteoriteMgr.getMeteoriteList()
 

@@ -57,14 +57,15 @@ class Meteorite():
     #     return collideWithBullet
     
 class MeteoriteMgr():
-    ADD_NEW_METEORITES = 20
+
     def __init__(self,window):
         self.window = window
+        self.addNewMeteorite = 20
         self.reset()
 
     def reset(self):
         self.meteoriteList = []
-        self.nFramesTimeTilNextMeteorites = MeteoriteMgr.ADD_NEW_METEORITES
+        self.nFramesTimeTilNextMeteorites = self.addNewMeteorite
     
     def update(self,level = 0):
         nMeteoritesRemove = 0
@@ -78,13 +79,19 @@ class MeteoriteMgr():
         if self.nFramesTimeTilNextMeteorites == 0:
             oMeteorite = Meteorite(self.window,level)
             self.meteoriteList.append(oMeteorite)
-            self.nFramesTimeTilNextMeteorites = MeteoriteMgr.ADD_NEW_METEORITES
+            self.nFramesTimeTilNextMeteorites = self.addNewMeteorite
 
         return nMeteoritesRemove
     
     def getMeteoriteList(self):
         return self.meteoriteList
     
+    def getAddNewMeteorite(self):
+        return self.addNewMeteorite
+    
+    def setAddNewMeteorite(self,updatedAddNewMeteorite):
+        self.addNewMeteorite = updatedAddNewMeteorite
+
     def draw(self):
         for oMeteorite in self.meteoriteList:
             oMeteorite.draw()
