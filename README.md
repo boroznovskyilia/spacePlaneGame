@@ -1,4 +1,4 @@
-# spacePlaneGam# SpacePlaneGame
+# SpacePlaneGame
 
 Welcome to SpacePlaneGame, an action-packed space adventure where you pilot a high-speed spaceplane through a meteorite-filled cosmos. Evade meteorites, shoot them down, and compete for a place on the leader's table!
 
